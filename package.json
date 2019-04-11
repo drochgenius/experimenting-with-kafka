@@ -1,35 +1,42 @@
 {
-  "name": "experimenting-with-kafka",
-  "version": "1.0.0",
-  "description": "Experimenting with Apache Kafka using kafka-node",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "src/**/*",
-    "dist/**/*"
-  ],
-  "scripts": {
-    "build": "tsc -p src",
-    "watch": "tsc -p src -w",
-    "prepublishOnly": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/drochgenius/experimenting-with-kafka.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/drochgenius/experimenting-with-kafka/issues"
-  },
-  "homepage": "https://github.com/drochgenius/experimenting-with-kafka#readme",
-  "devDependencies": {
-    "@types/node": "^11.13.4",
-    "eslint": "^5.16.0",
-    "typescript": "^3.4.3"
-  },
-  "dependencies": {
-    "kafka-node": "^4.1.0"
-  }
+    "name": "experimenting-with-kafka",
+    "version": "1.0.0",
+    "description": "Experimenting with Apache Kafka using kafka-node",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "src/**/*",
+        "dist/**/*"
+    ],
+    "scripts": {
+        "start": "node dist/server/index.js",
+        "build": "tsc -p src/server; tsc -p src/client;",
+        "bundle": "rollup -c",
+        "watch": "npm run build; npm run bundle; concurrently --names 'server,client,rollup' -c 'white.bgBlue,bgCyan,white.bgRed' 'tsc -p ./src/server -w' 'tsc -p ./src/client -w' 'rollup -c -w' ",
+        "prepublishOnly": "npm run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/drochgenius/experimenting-with-kafka.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/drochgenius/experimenting-with-kafka/issues"
+    },
+    "homepage": "https://github.com/drochgenius/experimenting-with-kafka#readme",
+    "devDependencies": {
+        "@types/node": "^11.13.4",
+        "concurrently": "^4.1.0",
+        "eslint": "^5.16.0",
+        "rollup": "^1.10.0",
+        "rollup-plugin-node-resolve": "^4.2.3",
+        "typescript": "^3.4.3"
+    },
+    "dependencies": {
+        "kafka-node": "^4.1.0",
+        "lit-element": "^2.1.0",
+        "node-static": "^0.7.11"
+    }
 }

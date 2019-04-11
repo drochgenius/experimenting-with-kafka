@@ -1,11 +1,9 @@
 {
     "compilerOptions": {
+        "experimentalDecorators": true,
         "target": "esnext",
-        "module": "commonjs",
         "moduleResolution": "node",
         "declaration": true,
-        "sourceMap": true,
-        "outDir": "../dist",
-        "rootDir": "./"
+        "sourceMap": true
     }
 }
