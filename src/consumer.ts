@@ -16,7 +16,7 @@ client.refreshMetadata([topic], (err: Error) => {
     const offset = new Offset(client);
 
     if (err) {
-        console.error('HERRRRRRRRRROR', err);
+        console.error(err);
         process.exit(1);
     }
 
@@ -28,8 +28,6 @@ client.refreshMetadata([topic], (err: Error) => {
      * If consumer get `offsetOutOfRange` event, fetch data from the smallest(oldest) offset
      */
     consumer.on('offsetOutOfRange', (topic: OffsetFetchRequest) => {
-        // @ts-ignore
-        topic.maxNum = 2;
         offset.fetch([topic], function(err, offsets) {
             if (err) {
                 return console.error(err);
