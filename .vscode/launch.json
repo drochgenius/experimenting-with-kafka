@@ -7,8 +7,15 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Producer",
             "program": "${workspaceFolder}/src/producer.ts",
+            "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Consumer",
+            "program": "${workspaceFolder}/src/consumer.ts",
             "outFiles": ["${workspaceFolder}/dist/**/*.js"]
         }
     ]

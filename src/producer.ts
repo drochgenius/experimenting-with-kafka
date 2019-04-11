@@ -1,10 +1,10 @@
-import { KafkaClient as Client, KeyedMessage, HighLevelProducer } from 'kafka-node';
+import { KafkaClient as Client, KeyedMessage, Producer } from 'kafka-node';
 
 const topic: string = 'test';
 
 // const client = new Client({ kafkaHost: 'kafka.br.internal:9092', requestTimeout: 100000 });
 const client = new Client();
-const producer = new HighLevelProducer(client);
+const producer = new Producer(client);
 
 producer.on(
     'ready',
