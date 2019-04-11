@@ -2,8 +2,8 @@ import { KafkaClient as Client, KeyedMessage, HighLevelProducer } from 'kafka-no
 
 const topic: string = 'test';
 
-const client = new Client({ kafkaHost: 'kafka.br.internal:9092', requestTimeout: 100000 });
-// const client = new Client();
+// const client = new Client({ kafkaHost: 'kafka.br.internal:9092', requestTimeout: 100000 });
+const client = new Client();
 const producer = new HighLevelProducer(client);
 
 producer.on(
@@ -19,6 +19,7 @@ producer.on(
                 [{ topic, messages: [message, keyedMessage] }],
                 (err: Error, result: any): void => {
                     console.log(err || result);
+                    process.exit();
                 }
             );
         });
