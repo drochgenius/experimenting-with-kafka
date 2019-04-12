@@ -1,0 +1,10 @@
+{
+    "extends": "../tsconfig",
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "lib": ["esnext", "dom"],
+        "module": "esnext",
+        "outDir": "../../dist/client",
+        "rootDir": "./"
+    }
+}

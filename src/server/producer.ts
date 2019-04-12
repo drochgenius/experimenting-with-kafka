@@ -1,4 +1,7 @@
-import { KafkaClient as Client, KeyedMessage, Producer } from 'kafka-node';
+import * as program from 'commander';
+import { KafkaClient as Client, Producer } from 'kafka-node';
+
+program.version('0.0.1').parse(process.argv);
 
 const topic: string = 'test';
 
@@ -10,22 +13,21 @@ producer.on(
     'ready',
     (): void => {
         console.log('Producer is ready');
-        const message: string = 'a message';
-        const keyedMessage = new KeyedMessage('keyed', 'a keyed message');
-
+        const message: string = program.args.join(' ');
+        // const keyedMessage = new KeyedMessage('keyed', 'a keyed message');
         client.refreshMetadata([topic], (err: Error) => {
-            console.log(`Sending message to ${topic}`);
+            console.log(`Sending message to ${topic}: ${message}`);
             producer.send(
-                [{ topic, messages: [message, keyedMessage] }],
+                [{ topic, messages: [message] }],
                 (err: Error, result: any): void => {
                     console.log(err || result);
                     process.exit();
                 }
             );
         });
+
+        producer.on('error', (err: Error) => {
+            console.log('error', err);
+        });
     }
 );
-
-producer.on('error', (err: Error) => {
-    console.log('error', err);
-});
