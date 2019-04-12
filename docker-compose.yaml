@@ -1,6 +1,6 @@
 # Full Kafka Stack development environment
 # source: https://github.com/simplesteph/kafka-stack-docker-compose/blob/master/full-stack.yml
-version: '2.1'
+version: '3'
 
 services:
   zoo1:
