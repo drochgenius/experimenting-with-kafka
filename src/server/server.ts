@@ -1,24 +1,27 @@
-import * as WebSocket from 'ws';
-import { Server, Message } from 'ws';
+import * as dotenv from 'dotenv';
+import { Server, Message, Socket, WebSocketClient } from 'ws';
 import * as express from 'express';
 import { kafkaSubscribe } from './consumer';
-const PORT = 3210;
+dotenv.config();
+
+const PORT: number = parseInt(process.env.PORT) || 3210;
 
 const app = express();
+
+// Server static files
 app.use(express.static('./'));
 
 const server = new Server({ server: app.listen(PORT) });
 
-console.log(`Server listening: http://localhost:${PORT}`);
+function send(message: Message): void {
+    server.clients.forEach((client: WebSocketClient) => {
+        client.send(message.value);
+    });
+}
 
-server.on('connection', (socket: WebSocket) => {
+server.on('connection', (socket: Socket) => {
     // subscribe to the `test` stream
     kafkaSubscribe('test', (message: Message) => send(message));
 });
 
-function send(message: Message): void {
-    console.log('Messages are coming')
-    server.clients.forEach((client: WebSocket) => {
-        client.send(message.value);
-    });
-}
+console.log(`Server listening: http://localhost:${PORT}`);

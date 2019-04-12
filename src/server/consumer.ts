@@ -1,8 +1,12 @@
+import * as dotenv from 'dotenv';
 import { KafkaClient as Client, Consumer, Message, Offset, OffsetFetchRequest, ConsumerOptions } from 'kafka-node';
-import { Server } from 'ws';
+
+dotenv.config();
+
+const kafkaHost: string = process.env.KAFKA_HOST || 'localhost:9092';
 
 export function kafkaSubscribe(topic: string = 'test', send: (message: Message) => void) {
-    const client = new Client();
+    const client = new Client({ kafkaHost });
     const topics: OffsetFetchRequest[] = [{ topic: topic, partition: 0 }];
     const options: ConsumerOptions = { autoCommit: false, fetchMaxWaitMs: 1000, fetchMaxBytes: 1024 * 1024 };
 
