@@ -3,7 +3,7 @@ import { LitElement, html, customElement, property, TemplateResult } from 'lit-e
 @customElement('kafka-consumer')
 export class KafkaConsumer extends LitElement {
     @property({ type: Array })
-    private messages: string[];
+    private message: string;
 
     private ws: WebSocket;
 
@@ -14,7 +14,7 @@ export class KafkaConsumer extends LitElement {
 
     protected render(): TemplateResult {
         return html`
-            <p>Coming soon...</p>
+            <p>${this.message}</p>
         `;
     }
 
@@ -26,20 +26,20 @@ export class KafkaConsumer extends LitElement {
                 const message = 'Hello!';
                 console.log('Sending:', message);
                 // Send the message to the WebSocket server
-                ws.send(message);
+                // ws.send(message);
             }
         );
 
         // Add a listener in order to process WebSocket messages received from the server
-        ws.addEventListener(
-            'message',
-            (event: MessageEvent): void => {
-                // The `event` object is a typical DOM event object, and the message data sent
-                // by the server is stored in the `data` property
-                console.log('Received:', event.data);
-            }
-        );
+        ws.addEventListener('message', this.handleMessage.bind(this));
 
         this.ws = ws;
+    }
+
+    private handleMessage(event: MessageEvent): void {
+        // The `event` object is a typical DOM event object, and the message data sent
+        // by the server is stored in the `data` property
+        console.log('Received:', event.data);
+        this.message = event.data;
     }
 }
