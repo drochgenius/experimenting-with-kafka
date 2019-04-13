@@ -1,6 +1,8 @@
 # Experimenting with Apache Kafka
 Experimenting with Apache Kafka using kafka-node
 
+For a brief introduction to Kafka, see this [article](https://sookocheff.com/post/kafka/kafka-in-a-nutshell/).
+
 ## Local Kafka Setup
 
 Assuming you have installed [Docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) on your computer.
