@@ -32,8 +32,8 @@
     "homepage": "https://github.com/drochgenius/experimenting-with-kafka#readme",
     "devDependencies": {
         "@types/node": "latest",
-        "@typescript-eslint/eslint-plugin": "^1.6.0",
-        "@typescript-eslint/parser": "^1.6.0",
+        "@typescript-eslint/eslint-plugin": "latest",
+        "@typescript-eslint/parser": "latest",
         "concurrently": "latest",
         "eslint": "latest",
         "rollup": "latest",
