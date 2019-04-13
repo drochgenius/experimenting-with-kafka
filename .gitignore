@@ -3,3 +3,4 @@ node_modules/
 dist/
 full-stack/
 connectors/
+.vscode/
