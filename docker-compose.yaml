@@ -1,5 +1,5 @@
-# Full Kafka Stack development environment
-# source: https://github.com/simplesteph/kafka-stack-docker-compose/blob/master/full-stack.yml
+# Local Kafka development environment setup
+# ref: https://github.com/simplesteph/kafka-stack-docker-compose/blob/master/full-stack.yml
 version: '3'
 
 services:
