@@ -7,7 +7,7 @@ dotenv.config();
 
 const kafkaHost: string = process.env.KAFKA_HOST || 'localhost:9092';
 
-export function kafkaSubscribe(topic: string = 'test', send: (message: Message) => void): void {
+export function kafkaSubscribe(topic: string, send: (message: Message) => void): void {
     const client = new Client({ kafkaHost });
     const topics: OffsetFetchRequest[] = [{ topic: topic, partition: 0 }];
     const options: ConsumerOptions = { autoCommit: false, fetchMaxWaitMs: 1000, fetchMaxBytes: 1024 * 1024 };

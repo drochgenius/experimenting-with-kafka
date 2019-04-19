@@ -6,15 +6,18 @@ import { KafkaClient as Client, Producer, ProduceRequest } from 'kafka-node';
 dotenv.config();
 
 const kafkaHost: string = process.env.KAFKA_HOST || 'localhost:9092';
-const client = new Client({ kafkaHost });
-const producer = new Producer(client);
 
 export function publish(topic: string, message: string): void {
+    // The client connects to a Kafka broker
+    const client = new Client({ kafkaHost });
+    // The producer handles publishing messages over a topic
+    const producer = new Producer(client);
+
+    // First wait for the producer to be initialized
     producer.on(
         'ready',
         (): void => {
-            console.log('Producer is ready');
-            // const keyedMessage = new KeyedMessage('keyed', 'a keyed message');
+            // Update metadata for the topic we'd like to publish to
             client.refreshMetadata(
                 [topic],
                 (err: Error): void => {
@@ -32,13 +35,13 @@ export function publish(topic: string, message: string): void {
                     );
                 }
             );
-
-            producer.on(
-                'error',
-                (err: Error): void => {
-                    console.log('error', err);
-                }
-            );
+        }
+    );
+    
+    producer.on(
+        'error',
+        (err: Error): void => {
+            console.log('error', err);
         }
     );
 }
