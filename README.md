@@ -3,6 +3,13 @@ Experimenting with Apache Kafka using kafka-node
 
 For a brief introduction to Kafka, see this [article](https://sookocheff.com/post/kafka/kafka-in-a-nutshell/).
 
+![kafka demo](/img/kafka-demo.png)
+
+* A simple command-line tool to publish messages to a Kafka stream.
+* A basic Express server that subscribes to a Kafka stream and exposes it over a WebSocket.
+* A simple front-end application to display incoming messages.
+
+
 ## Local Kafka Setup
 
 Assuming you have installed [Docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) on your computer.
