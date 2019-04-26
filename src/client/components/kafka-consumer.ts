@@ -10,6 +10,9 @@ export class KafkaConsumer extends LitElement {
             div {
                 border: 2px solid black;
                 padding: 1em;
+                font-size: 1.5em;
+                color: blue;
+                background-color: lightyellow;
             }
         `;
     }
