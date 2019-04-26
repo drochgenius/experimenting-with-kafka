@@ -2,7 +2,7 @@
 Experimenting with Apache Kafka using kafka-node
 
 For a brief introduction to Kafka, see this [article](https://sookocheff.com/post/kafka/kafka-in-a-nutshell/).
-
+config.
 ![kafka demo](/img/kafka-demo.png)
 
 * A simple command-line tool to publish messages to a Kafka stream.
