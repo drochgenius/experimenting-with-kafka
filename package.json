@@ -12,7 +12,7 @@
         "dist/**/*"
     ],
     "scripts": {
-        "start": "node dist/server/server.js",
+        "start": "nodemon -r source-map-support/register dist/server/server.js",
         "build": "tsc -p src/server; tsc -p src/client;",
         "bundle": "rollup -c",
         "watch": "npm run build; npm run bundle; concurrently --names 'server,client,rollup' -c 'white.bgBlue,bgCyan,white.bgRed' 'tsc -p ./src/server -w' 'tsc -p ./src/client -w' 'rollup -c -w' ",
@@ -36,8 +36,10 @@
         "@typescript-eslint/parser": "latest",
         "concurrently": "latest",
         "eslint": "latest",
+        "nodemon": "^1.18.11",
         "rollup": "latest",
         "rollup-plugin-node-resolve": "latest",
+        "source-map-support": "^0.5.12",
         "typescript": "latest"
     },
     "dependencies": {

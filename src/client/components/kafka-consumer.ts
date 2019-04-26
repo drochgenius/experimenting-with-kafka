@@ -1,9 +1,18 @@
-import { LitElement, html, customElement, property, TemplateResult } from 'lit-element';
+import { css, CSSResult, LitElement, html, customElement, property, TemplateResult } from 'lit-element';
 
 @customElement('kafka-consumer')
 export class KafkaConsumer extends LitElement {
     @property({ type: Array })
     private message: string;
+
+    public static get styles(): CSSResult {
+        return css`
+            div {
+                border: 2px solid black;
+                padding: 1em;
+            }
+        `;
+    }
 
     public constructor() {
         super();
@@ -12,7 +21,9 @@ export class KafkaConsumer extends LitElement {
 
     protected render(): TemplateResult {
         return html`
-            <p>${this.message}</p>
+            <div>
+                <p>${this.message}</p>
+            </div>
         `;
     }
 
