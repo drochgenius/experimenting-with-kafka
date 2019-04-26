@@ -1,8 +1,21 @@
 # Experimenting with Apache Kafka
-Experimenting with Apache Kafka using kafka-node
 
-For a brief introduction to Kafka, see this [article](https://sookocheff.com/post/kafka/kafka-in-a-nutshell/).
-config.
+Experimenting with [Apache Kafka](https://kafka.apache.org/intro) using [kafka-node](https://github.com/SOHU-Co/kafka-node).
+
+Apache Kafka is a distributed streaming platform.
+
+Here are some of the typical Kafka use cases:
+
+* Connect systems together
+* Build data pipelines
+
+For a brief introduction to Kafka, we recommend reading this [article](https://sookocheff.com/post/kafka/kafka-in-a-nutshell/) in addition to the official Kafka docs.
+
+
+## Overview
+
+The most popular data format used with Kafka is [avro](https://avro.apache.org/), but Kafka supports any type of data. For the sake of simplicity, we'll use plain text messages in this demo.
+
 ![kafka demo](/img/kafka-demo.png)
 
 * A simple command-line tool to publish messages to a Kafka stream.
@@ -49,7 +62,10 @@ npm run watch
 Make sure you executed `npm link` orthe following may not work.
 
 ```shell
+# cli man page
 kafka-publish -h
+# send message on the test topic
+kafka-publish -t test "Foo bar"
 ```
 
 
